@@ -1,0 +1,13 @@
+---
+# Minimal Mistakes 의 main.scss 를 덮어써 글꼴만 바꾼다
+---
+
+@charset "utf-8";
+
+$sans-serif: "SUIT Variable", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+$global-font-family: $sans-serif;
+$header-font-family: $sans-serif;
+$caption-font-family: $sans-serif;
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
+@import "minimal-mistakes";
