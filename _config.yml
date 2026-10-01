@@ -1,0 +1,35 @@
+title: Notes
+locale: ko-KR
+timezone: Asia/Seoul
+
+remote_theme: "mmistakes/minimal-mistakes@4.26.2"
+minimal_mistakes_skin: default
+search: true
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-include-cache
+  - jekyll-feed
+  - jekyll-paginate
+
+paginate: 10
+paginate_path: /page:num/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      # 넓은 표가 잘리지 않도록 본문 폭을 넓게 사용
+      classes: wide
+      author_profile: false
+      read_time: false
+      comments: false
+      share: false
+      related: false
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
