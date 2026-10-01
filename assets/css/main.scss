@@ -1,5 +1,5 @@
 ---
-# Minimal Mistakes 의 main.scss 를 덮어써 글꼴만 바꾼다
+# Minimal Mistakes 의 main.scss 를 덮어써 글꼴과 본문 폭, 표 모양을 바꾼다
 ---
 
 @charset "utf-8";
@@ -9,5 +9,76 @@ $global-font-family: $sans-serif;
 $header-font-family: $sans-serif;
 $caption-font-family: $sans-serif;
 
+// 넓은 표가 화면을 시원하게 쓰도록 사이트 최대 폭을 넓힌다
+$max-width: 1680px;
+
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
 @import "minimal-mistakes";
+
+$table-line-color: #eef0f3;
+$table-header-color: #8b95a1;
+$table-hover-color: #f7f8fa;
+$narrow-screen: 768px;
+
+// 사이드바 자리를 비워 두지 않고 본문이 전체 폭을 쓰게 한다
+.layout--single .page {
+  float: none;
+  width: 100%;
+  padding-right: 0;
+}
+
+.page__content table {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  margin-bottom: 2.5em;
+  border-collapse: collapse;
+  font-size: 0.85em;
+  font-variant-numeric: tabular-nums;
+
+  th,
+  td {
+    padding: 0.75em 0.9em;
+    border: 0;
+    border-bottom: 1px solid $table-line-color;
+    background: none;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  th {
+    color: $table-header-color;
+    font-weight: 500;
+  }
+
+  // 종목명, 시장 컬럼은 왼쪽 정렬
+  th:nth-child(-n + 2),
+  td:nth-child(-n + 2) {
+    text-align: left;
+  }
+
+  th:first-child {
+    width: 22%;
+  }
+
+  tbody tr:hover {
+    background: $table-hover-color;
+  }
+
+  td a {
+    color: inherit;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  // 좁은 화면에서는 표가 넘치므로 가로 스크롤로 되돌린다
+  @media (max-width: $narrow-screen) {
+    display: block;
+    overflow-x: auto;
+    table-layout: auto;
+  }
+}
