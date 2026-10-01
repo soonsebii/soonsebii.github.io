@@ -49,6 +49,17 @@ $narrow-screen: 768px;
   th {
     color: $table-header-color;
     font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+
+    // 정렬 중인 컬럼과 방향 표시 (table-sort.js 가 data-sort 를 붙인다)
+    &[data-sort="asc"]::after {
+      content: " ▲";
+    }
+
+    &[data-sort="desc"]::after {
+      content: " ▼";
+    }
   }
 
   // 종목명, 카테고리, 시장 컬럼은 왼쪽 정렬
